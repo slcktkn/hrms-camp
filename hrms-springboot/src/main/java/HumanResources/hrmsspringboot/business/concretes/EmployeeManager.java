@@ -1,35 +1,39 @@
 package HumanResources.hrmsspringboot.business.concretes;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import HumanResources.hrmsspringboot.core.utilities.results.ErrorResult;
+import HumanResources.hrmsspringboot.business.abstracts.EmployeeCheckService;
 import HumanResources.hrmsspringboot.business.abstracts.EmployeeService;
-import HumanResources.hrmsspringboot.business.abstracts.UserService;
+
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessDataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
 import HumanResources.hrmsspringboot.dataAccess.abstracts.EmployeeDao;
 import HumanResources.hrmsspringboot.entities.concretes.Employee;
-import HumanResources.hrmsspringboot.entities.concretes.User;
+
 import HumanResources.hrmsspringboot.entities.dtos.EmployeeForRegisterDto;
 import HumanResources.hrmsspringboot.entities.dtos.EmployeeWithJobPositionDto;
 
 @Service
 public class EmployeeManager implements EmployeeService {
 	
-	private EmployeeDao employeeDao;
-	private UserService userService;
-	
 	@Autowired
-	public EmployeeManager(EmployeeDao employeeDao,UserService userService) {
+	private EmployeeDao employeeDao;
+	private EmployeeCheckService checkService;
+	
+	
+	
+	public EmployeeManager(EmployeeDao employeeDao) {
 		super();
 		this.employeeDao = employeeDao;
-		this.userService = userService;
+		
+		
+
 	}
 
 	@Override
@@ -47,9 +51,12 @@ public class EmployeeManager implements EmployeeService {
 
 	@Override
 	public Result add(Employee employee) {
+		if (checkService.CheckIfRealPerson(employee).isSuccess()) {
+			this.employeeDao.save(employee);
+			return new SuccessResult();
+	}
 		
-		this.employeeDao.save(employee);
-		return new SuccessResult();
+		return new ErrorResult("Bilgilerinizi kontrol ediniz");
 	}
 
 	
