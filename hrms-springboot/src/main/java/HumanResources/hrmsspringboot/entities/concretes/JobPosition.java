@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +36,7 @@ public class JobPosition {
 	@Column(name="job_description")
 	private String jobDescription;
 	
+	@JsonProperty(access=Access.READ_ONLY)
 	@OneToMany(mappedBy = "jobPosition")
 	private List<Employee> employees;
 	

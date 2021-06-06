@@ -7,12 +7,16 @@ import org.springframework.web.multipart.MultipartFile;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.Resume;
+import HumanResources.hrmsspringboot.entities.dtos.ResumeAddDto;
+import HumanResources.hrmsspringboot.entities.dtos.ResumeGetDto;
 
 public interface ResumeService {
 	
-	Result add (Resume resume);
+	Result add (ResumeAddDto resume);
 	
-	DataResult<List<Resume>> getAll();
+	DataResult<List<ResumeGetDto>> getAll();
+	
+	//DataResult<List<ResumeGetDto>> getAllByEmployeeId(int employeeId);
 	
 	Result saveImage (MultipartFile file,int resumeId);
 	

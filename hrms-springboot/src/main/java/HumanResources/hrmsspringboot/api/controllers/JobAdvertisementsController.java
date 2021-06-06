@@ -14,7 +14,8 @@ import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
 import HumanResources.hrmsspringboot.entities.concretes.JobAdvertisement;
-import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementDto;
+import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementAddDto;
+import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementGetDto;
 
 @RestController
 @RequestMapping("/api/jobadv")
@@ -34,13 +35,13 @@ public class JobAdvertisementsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add (JobAdvertisement jobAdvertisement) {
-		jobAdvertisementService.add(jobAdvertisement);
+	public Result add (JobAdvertisementAddDto jobAdvertisementAddDto) {
+		jobAdvertisementService.add(jobAdvertisementAddDto);
 		return new SuccessResult("");
 	}
 	
 	@GetMapping("/getActive")
-	public DataResult<List<JobAdvertisementDto>> getActive(){
+	public DataResult<List<JobAdvertisementGetDto>> getActive(){
 		
 		return jobAdvertisementService.findByIsActive();
 	}

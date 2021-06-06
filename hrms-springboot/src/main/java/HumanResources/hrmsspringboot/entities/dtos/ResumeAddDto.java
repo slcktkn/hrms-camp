@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResumePostDto {
+public class ResumeAddDto {
 	@JsonIgnore
 	private int id;
 	private int jobSeekerId;

@@ -19,7 +19,7 @@ public class LanguageDto {
 
 	private String language;
 
-	private char langLevel;
+	private int langLevel;
 
 	private Date createdDate;
 	

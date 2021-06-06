@@ -5,22 +5,21 @@ import java.util.List;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.JobAdvertisement;
-import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementDto;
+import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementAddDto;
 import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementGetDto;
 
 public interface JobAdvertisementService {
-	
-	Result add (JobAdvertisement jobAdvertisement);
+
 	
 	DataResult<List<JobAdvertisement>> getAll();
 	
-	DataResult<List<JobAdvertisementDto>> findByIsActive();
+	DataResult<List<JobAdvertisementGetDto>> findByIsActive();
 	
-	DataResult<List<JobAdvertisementDto>> findByIsActiveAndEmployer_CompanyName(String companyName);
+	DataResult<List<JobAdvertisementGetDto>> findByIsActiveAndEmployer_CompanyName(String companyName);
 	
 	DataResult<List<JobAdvertisementGetDto>> findAll();
 
-	Result add(JobAdvertisementGetDto jobAdvertisementRequestDto);
+	Result add(JobAdvertisementAddDto jobAdvertisementRequestDto);
 
 
 	DataResult<List<JobAdvertisementGetDto>> findAllByIdAndIsActiveTrue(int employerId);

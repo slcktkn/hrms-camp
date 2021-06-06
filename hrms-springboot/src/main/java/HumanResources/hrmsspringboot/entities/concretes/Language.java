@@ -34,7 +34,7 @@ public class Language {
 	private String language;
 	
 	@Column(name = "lang_level")
-	private char langLevel;
+	private int langLevel;
 	
 	@Column(name = "created_date")
 	private Date createdDate;

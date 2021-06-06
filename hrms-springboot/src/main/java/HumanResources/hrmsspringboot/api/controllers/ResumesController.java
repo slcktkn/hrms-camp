@@ -14,7 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 import HumanResources.hrmsspringboot.business.abstracts.ResumeService;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
-import HumanResources.hrmsspringboot.entities.concretes.Resume;
+import HumanResources.hrmsspringboot.entities.dtos.ResumeAddDto;
+import HumanResources.hrmsspringboot.entities.dtos.ResumeGetDto;
 
 @RestController
 @RequestMapping("/api/resumes")
@@ -28,15 +29,21 @@ public class ResumesController {
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Resume>> getAll(){
+	public DataResult<List<ResumeGetDto>> getAll(){
 		return resumeService.getAll();
 		
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Resume resume) {
+	public Result add(@RequestBody ResumeAddDto resume) {
 		return resumeService.add(resume);
 	}
+	
+	/*@GetMapping("/getallbyemoyeeid")
+	public DataResult<List<ResumeGetDto>> getAllByEmployeeId(int id){
+		return resumeService.getAllByEmployeeId(id);
+		
+	}*/
 	
 	@PutMapping("/uploadImage")
 	public Result saveImage(@RequestBody MultipartFile file,@RequestParam int resumeId) {

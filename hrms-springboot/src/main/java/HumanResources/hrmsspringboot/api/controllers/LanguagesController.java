@@ -12,6 +12,8 @@ import HumanResources.hrmsspringboot.business.abstracts.LanguageService;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.Language;
+import HumanResources.hrmsspringboot.entities.dtos.LanguageDto;
+import HumanResources.hrmsspringboot.entities.dtos.LanguageGetDto;
 
 @RestController
 @RequestMapping("api/languages")
@@ -25,14 +27,14 @@ public class LanguagesController {
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Language>> getAll(){
+	public DataResult<List<LanguageGetDto>> getAll(){
 		return languageService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Language language) {
+	public Result add(@RequestBody LanguageDto languageDto) {
 		
-		return languageService.add(language);
+		return languageService.add(languageDto);
 	}
 	
 

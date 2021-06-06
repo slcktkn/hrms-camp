@@ -10,9 +10,10 @@ import HumanResources.hrmsspringboot.core.utilities.dtoConverter.abstracts.DtoCo
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessDataResult;
+import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
 import HumanResources.hrmsspringboot.dataAccess.abstracts.JobAdvertisementDao;
 import HumanResources.hrmsspringboot.entities.concretes.JobAdvertisement;
-import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementDto;
+import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementAddDto;
 import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementGetDto;
 
 @Service
@@ -44,18 +45,18 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisementDto>> findByIsActive() {
-		List<JobAdvertisement> jobAdvertisements = jobAdvertisementDao.findByIsActive(true);
-		return new SuccessDataResult<List<JobAdvertisementDto>>(
-		dtoConverterService.dtoConverter(jobAdvertisements,JobAdvertisementDto.class));
+	public DataResult<List<JobAdvertisementGetDto>> findByIsActive() {
+		List<JobAdvertisementGetDto> jobAdvertisements = jobAdvertisementDao.findByIsActive(true);
+		return new SuccessDataResult<List<JobAdvertisementGetDto>>(
+		dtoConverterService.dtoConverter(jobAdvertisements,JobAdvertisementGetDto.class));
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisementDto>> findByIsActiveAndEmployer_CompanyName(String companyName) {
-		List<JobAdvertisement> jobAdvertisements = jobAdvertisementDao.findByIsActiveAndEmployer_CompanyName
+	public DataResult<List<JobAdvertisementGetDto>> findByIsActiveAndEmployer_CompanyName(String companyName) {
+		List<JobAdvertisementGetDto> jobAdvertisements = jobAdvertisementDao.findByIsActiveAndEmployer_CompanyName
 				(true, companyName);
-		return new SuccessDataResult<List<JobAdvertisementDto>>(
-		dtoConverterService.dtoConverter(jobAdvertisements,JobAdvertisementDto.class));
+		return new SuccessDataResult<List<JobAdvertisementGetDto>>(
+		dtoConverterService.dtoConverter(jobAdvertisements,JobAdvertisementGetDto.class));
 	}
 
 //	@Override
@@ -87,9 +88,10 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 }
 
 	@Override
-	public Result add(JobAdvertisement jobAdvertisement) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result add(JobAdvertisementAddDto jobAdvertisementRequestDto) {
+		jobAdvertisementDao.save((JobAdvertisement) dtoConverterService.dtoClassConverter
+				(jobAdvertisementRequestDto, JobAdvertisement.class));
+		return new SuccessResult("İş ilanı başarıyla eklendi");
 	}
 
 	@Override
@@ -98,11 +100,6 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 		return null;
 	}
 
-	@Override
-	public Result add(JobAdvertisementGetDto jobAdvertisementRequestDto) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }
