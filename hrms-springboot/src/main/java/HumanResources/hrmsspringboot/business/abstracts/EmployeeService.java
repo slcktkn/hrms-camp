@@ -16,7 +16,7 @@ public interface EmployeeService {
 
 	Result add(Employee employee);
 	
-	Result register (EmployeeForRegisterDto employee);
+	Result register (Employee employee);
 	
 	DataResult<List<EmployeeWithJobPositionDto>> getEmployeeWithJobPositions();
 

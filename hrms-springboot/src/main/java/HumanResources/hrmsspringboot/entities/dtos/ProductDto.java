@@ -21,5 +21,7 @@ public class ProductDto {
 	private String categoryName;
 	
 	private double unitPrice;
+	
+	private double unitPrice1;
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import HumanResources.hrmsspringboot.business.abstracts.ProductService;
 import HumanResources.hrmsspringboot.core.utilities.dtoConverter.abstracts.DtoConverterService;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
+import HumanResources.hrmsspringboot.core.utilities.results.ErrorResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessDataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
@@ -35,8 +36,14 @@ public class ProductManager implements ProductService {
 
 	@Override
 	public Result add(Product product) {
-		productDao.save(product);
+		
+		if (product.getUnitPrice()==product.getUnitPrice1()) {
+			System.out.println("metod calıstı");
+			productDao.save(product);
 		return new SuccessResult();
+		}
+		return new ErrorResult("olmadı");
+
 	}
 
 	@Override

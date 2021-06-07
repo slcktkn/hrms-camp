@@ -13,6 +13,7 @@ import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessDataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
+import HumanResources.hrmsspringboot.core.utilities.services.EmailService;
 import HumanResources.hrmsspringboot.dataAccess.abstracts.EmployeeDao;
 import HumanResources.hrmsspringboot.entities.concretes.Employee;
 
@@ -25,6 +26,7 @@ public class EmployeeManager implements EmployeeService {
 	@Autowired
 	private EmployeeDao employeeDao;
 	private EmployeeCheckService checkService;
+	private EmailService emailService;
 	
 	
 	
@@ -53,6 +55,7 @@ public class EmployeeManager implements EmployeeService {
 	public Result add(Employee employee) {
 		if (checkService.CheckIfRealPerson(employee).isSuccess()) {
 			this.employeeDao.save(employee);
+			emailService.sendEmail(employee.getEmail(), "Şifre gönderildi");
 			return new SuccessResult();
 	}
 		
@@ -97,9 +100,15 @@ public class EmployeeManager implements EmployeeService {
 	}
 
 	@Override
-	public Result register(EmployeeForRegisterDto employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public Result register(Employee employee) {
+		
+		System.out.println("metod çalıştı");		
+		if (employee.getPassword() == employee.getVerifiedPassword()) {
+			
+			emailService.sendEmail(employee.getEmail(), employee.getFirstName());
+			return new SuccessResult("Kullanıcı kaydedildi");
+		}
+		return new ErrorResult("Şifrelerinizi kontrol edin");
 	}
 
 }

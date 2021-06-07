@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmployeeForRegisterDto {
 
+	private int employeeId;
 	String firstName;
 	String lastName;
 	String nationalityId;

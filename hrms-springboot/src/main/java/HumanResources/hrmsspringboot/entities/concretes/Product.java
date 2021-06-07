@@ -34,6 +34,9 @@ public class Product {
 	@Column(name = "unit_price")
 	private double unitPrice;
 	
+	@Column(name = "unit_price1")
+	private double unitPrice1;
+	
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne(targetEntity = Category.class)

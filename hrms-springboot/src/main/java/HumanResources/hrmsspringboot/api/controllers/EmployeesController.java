@@ -50,9 +50,10 @@ public class EmployeesController {
 	}
 	
 	@PostMapping("/register")
-	public Result register (@RequestBody EmployeeForRegisterDto employee) {
+	public Result register (@RequestBody Employee employee) {
 		
 		this.employeeService.register(employee);
-		return new SuccessResult("Kullanıcı doğrulandı");
+		return new SuccessResult();
+		
 	}
 }
