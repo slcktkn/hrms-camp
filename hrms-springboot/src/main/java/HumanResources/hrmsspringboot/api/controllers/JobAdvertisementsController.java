@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,8 @@ public class JobAdvertisementsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add (JobAdvertisementAddDto jobAdvertisementAddDto) {
+	public Result add (@RequestBody JobAdvertisementAddDto jobAdvertisementAddDto) {
+		System.out.println("metot calıstı");
 		jobAdvertisementService.add(jobAdvertisementAddDto);
 		return new SuccessResult("");
 	}

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import HumanResources.hrmsspringboot.business.abstracts.LanguageService;
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
-import HumanResources.hrmsspringboot.entities.concretes.Language;
 import HumanResources.hrmsspringboot.entities.dtos.LanguageDto;
 import HumanResources.hrmsspringboot.entities.dtos.LanguageGetDto;
 

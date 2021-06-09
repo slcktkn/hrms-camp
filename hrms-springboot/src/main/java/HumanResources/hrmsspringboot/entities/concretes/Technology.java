@@ -20,24 +20,24 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name ="technologies")
+@Table(name = "technologies")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Technology {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne(targetEntity = Resume.class)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name = "resume_id")
 	private Resume resume;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "create_date")
 	private Date createDate;
 

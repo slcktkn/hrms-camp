@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class JobExperiencesController {
 	}
 	
 	@PostMapping("/add")
-	public Result add (JobExperienceDto jobExperienceDto) {
+	public Result add (@RequestBody JobExperienceDto jobExperienceDto) {
 		jobExperienceService.add(jobExperienceDto);
 		return new SuccessResult("");
 	}

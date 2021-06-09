@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 import HumanResources.hrmsspringboot.core.utilities.results.Result;
-import HumanResources.hrmsspringboot.entities.concretes.Resume;
 import HumanResources.hrmsspringboot.entities.dtos.ResumeAddDto;
 import HumanResources.hrmsspringboot.entities.dtos.ResumeGetDto;
 

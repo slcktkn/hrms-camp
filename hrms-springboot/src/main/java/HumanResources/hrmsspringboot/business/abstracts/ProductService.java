@@ -11,7 +11,7 @@ public interface ProductService {
 	
 	DataResult<List<Product>> getAll();
 	
-	Result add (Product product);
+	Result add (ProductDto product);
 	
 	DataResult<List<Product>> findByProductName(String productName);
 	

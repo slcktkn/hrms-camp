@@ -13,8 +13,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,20 +22,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Table(name="categories")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@Table(name = "categories")
 public class Category {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "category_name")
 	private String categoryName;
-	
+
 	@JsonIgnore
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL )
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Product> products;
 
 }

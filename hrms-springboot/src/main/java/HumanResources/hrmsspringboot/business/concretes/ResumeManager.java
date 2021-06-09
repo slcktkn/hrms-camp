@@ -27,7 +27,8 @@ public class ResumeManager implements ResumeService {
 	private DtoConverterService dtoConverterService;
 
 	@Autowired
-	public ResumeManager(ResumeDao resumeDao, CloudinaryService cloudinaryService,DtoConverterService dtoConverterService) {
+	public ResumeManager(ResumeDao resumeDao, CloudinaryService cloudinaryService,
+			DtoConverterService dtoConverterService) {
 		super();
 		this.resumeDao = resumeDao;
 		this.cloudinaryService = cloudinaryService;
@@ -38,13 +39,13 @@ public class ResumeManager implements ResumeService {
 	@Override
 	public Result add(ResumeAddDto resume) {
 
-		/*if (resume.getLanguages() != null) {
-			resume.getLanguages().forEach(lang -> lang.setResume(resume));
-		}
-
-		if (resume.getTechnologies() != null) {
-			resume.getLanguages().forEach(lang -> lang.setResume(resume));
-		}*/
+		/*
+		 * if (resume.getLanguages() != null) { resume.getLanguages().forEach(lang ->
+		 * lang.setResume(resume)); }
+		 * 
+		 * if (resume.getTechnologies() != null) { resume.getLanguages().forEach(lang ->
+		 * lang.setResume(resume)); }
+		 */
 		resumeDao.save((Resume) dtoConverterService.dtoClassConverter(resume, Resume.class));
 		return new SuccessResult("Kayıt Başarılı");
 	}
@@ -52,16 +53,14 @@ public class ResumeManager implements ResumeService {
 	@Override
 	public DataResult<List<ResumeGetDto>> getAll() {
 
-		return new SuccessDataResult<List<ResumeGetDto>>
-				(dtoConverterService.dtoConverter(resumeDao.findAll(), ResumeGetDto.class),
-						"Liste başarılı getirildi");
+		return new SuccessDataResult<List<ResumeGetDto>>(
+				dtoConverterService.dtoConverter(resumeDao.findAll(), ResumeGetDto.class), "Liste başarılı getirildi");
 	}
 
 	@Override
 	public Result saveImage(MultipartFile file, int resumeId) {
 
-		Map<String, String> uploader = (Map<String, String>) 
-				cloudinaryService.save(file).getData();
+		Map<String, String> uploader = (Map<String, String>) cloudinaryService.save(file).getData();
 		String imageUrl = uploader.get("url");
 		Resume Cv = resumeDao.getById(resumeId);
 
@@ -71,11 +70,12 @@ public class ResumeManager implements ResumeService {
 
 	}
 
-	/*@Override
-	public DataResult<List<ResumeGetDto>> getAllByEmployeeId(int employeeId) {
-		return new SuccessDataResult<List<ResumeGetDto>>(dtoConverterService.dtoConverter
-				(resumeDao.getAllByEmployeeId(employeeId),ResumeGetDto.class),"Kayıt getirildi");
-	}*/
-
+	/*
+	 * @Override public DataResult<List<ResumeGetDto>> getAllByEmployeeId(int
+	 * employeeId) { return new
+	 * SuccessDataResult<List<ResumeGetDto>>(dtoConverterService.dtoConverter
+	 * (resumeDao.getAllByEmployeeId(employeeId),ResumeGetDto.class)
+	 * ,"Kayıt getirildi"); }
+	 */
 
 }

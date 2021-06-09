@@ -9,38 +9,40 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "users")
-
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 
-	@Email
-	@NotBlank(message = "email cannot not blank")
-	@Column(name = "email", unique = true)
+	@Email(message = "Lütfen Geçerli Bir Mail Adresi Giriniz")
+	@NotBlank(message = "Mail Alanı Boş olamaz")
+	@Column(name = "email")
 	private String email;
 
-	@NotBlank(message = "password cannot not blank")
+	@NotBlank(message = "Şifre Alanı Boş olamaz")
+	@Size(min = 6, max = 16, message = "Şifre en az 6, en fazla 16 karakterden oluşabilir")
 	@Column(name = "password")
 	private String password;
 
-	@JsonIgnore
-	@NotBlank(message = "passwordCheck cannot not blank")
+	@NotBlank(message = "Şifre Alanı Boş olamaz")
 	@Transient
-	private String passwordCheck;
+	private String passwordRepeat;
 
+	@JsonIgnore
+	@Column(name = "verify")
+	private boolean verify = false;
 }

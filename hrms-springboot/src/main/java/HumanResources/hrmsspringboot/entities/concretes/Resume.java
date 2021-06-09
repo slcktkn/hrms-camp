@@ -32,7 +32,7 @@ public class Resume {
 	private int id;
 	
 	@ManyToOne(targetEntity = Employee.class)
-	@JoinColumn(name = "employee_id", referencedColumnName =  "employee_id" ,nullable = false)
+	@JoinColumn(name = "employee_id", referencedColumnName =  "id" ,nullable = false)
 	private Employee employee;
 	
 	@Column(name = "github_link")
@@ -68,5 +68,4 @@ public class Resume {
 	 @OneToMany(mappedBy = "resume",cascade = CascadeType.ALL ) 
 	 private List<JobExperience> jobExperiences;
 	
-
 }

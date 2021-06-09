@@ -19,10 +19,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
-@Table(name ="job_experiences")
+@Table(name = "job_experiences")
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobExperience {
@@ -31,14 +30,14 @@ public class JobExperience {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@JsonProperty(access = Access.WRITE_ONLY)
 	@ManyToOne(targetEntity = Resume.class)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name = "resume_id")
 	private Resume resume;
-	
-	@ManyToOne(targetEntity = JobPosition.class ,fetch = FetchType.LAZY)
-	@JoinColumn(name = "job_position_id", referencedColumnName =  "id" ,nullable = false)
+
+	@ManyToOne(targetEntity = JobPosition.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "job_position_id", referencedColumnName = "id", nullable = false)
 	private JobPosition jobPosition;
 
 	@Column(name = "company_name")

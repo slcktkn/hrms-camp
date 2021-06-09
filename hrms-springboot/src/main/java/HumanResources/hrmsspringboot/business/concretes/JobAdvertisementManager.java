@@ -89,6 +89,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 
 	@Override
 	public Result add(JobAdvertisementAddDto jobAdvertisementRequestDto) {
+		System.out.println("add metodu calıstı");
 		jobAdvertisementDao.save((JobAdvertisement) dtoConverterService.dtoClassConverter
 				(jobAdvertisementRequestDto, JobAdvertisement.class));
 		return new SuccessResult("İş ilanı başarıyla eklendi");

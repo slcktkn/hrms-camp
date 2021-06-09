@@ -18,37 +18,30 @@ import HumanResources.hrmsspringboot.dataAccess.abstracts.EmployeeDao;
 import HumanResources.hrmsspringboot.entities.concretes.Employee;
 
 import HumanResources.hrmsspringboot.entities.dtos.EmployeeForRegisterDto;
-import HumanResources.hrmsspringboot.entities.dtos.EmployeeWithJobPositionDto;
 
 @Service
 public class EmployeeManager implements EmployeeService {
-	
+
 	@Autowired
 	private EmployeeDao employeeDao;
 	private EmployeeCheckService checkService;
 	private EmailService emailService;
-	
-	
-	
+
 	public EmployeeManager(EmployeeDao employeeDao) {
 		super();
 		this.employeeDao = employeeDao;
-		
-		
-
 	}
 
 	@Override
 	public DataResult<List<Employee>> getAll() {
-		
-		return new SuccessDataResult<List<Employee>>
-		(this.employeeDao.findAll(),"Data listelendi");
+
+		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(), "Data listelendi");
 	}
 
 	@Override
 	public DataResult<Employee> getById(int id) {
-		
-		return new SuccessDataResult<>(this.employeeDao.getById(id),"Data listelendi");
+
+		return new SuccessDataResult<>(this.employeeDao.getById(id), "Data listelendi");
 	}
 
 	@Override
@@ -57,12 +50,11 @@ public class EmployeeManager implements EmployeeService {
 			this.employeeDao.save(employee);
 			emailService.sendEmail(employee.getEmail(), "Şifre gönderildi");
 			return new SuccessResult();
-	}
-		
+		}
+
 		return new ErrorResult("Bilgilerinizi kontrol ediniz");
 	}
 
-	
 	private Result checkIfPasswordVerified(EmployeeForRegisterDto employee) {
 
 		if (employee.getPassword().equals(employee.getVerifiedPassword())) {
@@ -72,7 +64,7 @@ public class EmployeeManager implements EmployeeService {
 			return new ErrorResult("Password is invalid");
 		}
 	}
-	
+
 	private Result checkIfNatioanlityIdExists(EmployeeForRegisterDto employee) {
 
 		if (employeeDao.getByNationalityId(employee.getNationalityId()) != null) {
@@ -81,34 +73,15 @@ public class EmployeeManager implements EmployeeService {
 		}
 		return null;
 	}
-	
+
 	private Result checkIfAllFieldsFilled(EmployeeForRegisterDto employee) {
 
-		if (employee.getEmail().equals("") || employee.getEmail() == null ||
-				employee.getPassword().equals("")|| employee.getPassword() == null) {
+		if (employee.getEmail().equals("") || employee.getEmail() == null || employee.getPassword().equals("")
+				|| employee.getPassword() == null) {
 			return new ErrorResult("Fill in the fields");
 		}
 
 		return null;
-	}
-
-	@Override
-	public DataResult<List<EmployeeWithJobPositionDto>> getEmployeeWithJobPositions() {
-		
-		return new SuccessDataResult<List<EmployeeWithJobPositionDto>>
-		(this.employeeDao.getEmployeeWithJobPositions(), "Detaylar getirildi");
-	}
-
-	@Override
-	public Result register(Employee employee) {
-		
-		System.out.println("metod çalıştı");		
-		if (employee.getPassword() == employee.getVerifiedPassword()) {
-			
-			emailService.sendEmail(employee.getEmail(), employee.getFirstName());
-			return new SuccessResult("Kullanıcı kaydedildi");
-		}
-		return new ErrorResult("Şifrelerinizi kontrol edin");
 	}
 
 }

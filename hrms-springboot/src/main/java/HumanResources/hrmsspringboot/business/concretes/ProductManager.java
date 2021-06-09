@@ -35,11 +35,12 @@ public class ProductManager implements ProductService {
 	}
 
 	@Override
-	public Result add(Product product) {
-		
+	public Result add(ProductDto product) {
+		System.out.println("metod calıstı");
 		if (product.getUnitPrice()==product.getUnitPrice1()) {
-			System.out.println("metod calıstı");
-			productDao.save(product);
+			
+			productDao.save((Product)dtoConverterService.dtoClassConverter
+					(product, Product.class));
 		return new SuccessResult();
 		}
 		return new ErrorResult("olmadı");
