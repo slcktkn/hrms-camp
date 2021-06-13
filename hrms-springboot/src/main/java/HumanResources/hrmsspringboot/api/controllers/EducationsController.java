@@ -22,7 +22,7 @@ import HumanResources.hrmsspringboot.entities.dtos.EducationDto;
 public class EducationsController {
 
 	private EducationService educationService;
-	
+
 	@Autowired
 	public EducationsController(EducationService educationService) {
 		super();
@@ -38,7 +38,5 @@ public class EducationsController {
 	public DataResult<List<EducationDto>> findAllByResumeIdOrderByStartedDateDesc(@RequestParam int id) {
 		return this.educationService.findAllByResumeIdOrderByStartedDateDesc(id);
 	}
-	
-	
 
 }

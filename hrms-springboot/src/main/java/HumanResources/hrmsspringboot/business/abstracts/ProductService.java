@@ -8,13 +8,13 @@ import HumanResources.hrmsspringboot.entities.concretes.Product;
 import HumanResources.hrmsspringboot.entities.dtos.ProductDto;
 
 public interface ProductService {
-	
+
 	DataResult<List<Product>> getAll();
-	
-	Result add (ProductDto product);
-	
+
+	Result add(ProductDto product);
+
 	DataResult<List<Product>> findByProductName(String productName);
-	
-	DataResult<List<ProductDto>>findAllByCategoryIdOrderByUnitPriceDesc(int id);
+
+	DataResult<List<ProductDto>> findAllByCategoryIdOrderByUnitPriceDesc(int id);
 
 }

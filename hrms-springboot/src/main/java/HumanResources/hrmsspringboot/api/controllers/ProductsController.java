@@ -1,6 +1,9 @@
 package HumanResources.hrmsspringboot.api.controllers;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,35 +20,35 @@ import HumanResources.hrmsspringboot.entities.dtos.ProductDto;
 @RestController
 @RequestMapping(name = "/api/products")
 public class ProductsController {
-	
+
 	private ProductService productService;
 
 	public ProductsController(ProductService productService) {
 		super();
 		this.productService = productService;
 	}
-	
+
 	@PostMapping("/add")
-	public Result add(@RequestBody ProductDto product) {
-		
+	public Result add(@Valid @RequestBody ProductDto product) {
+
 		return productService.add(product);
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<Product>> getAll(){
+	public DataResult<List<Product>> getAll() {
 		return productService.getAll();
-		
+
 	}
-	
+
 	@GetMapping("/getAllByIdOrderByIdDesc")
-	public DataResult<List<Product>> findByName(@RequestParam String productName){		
+	public DataResult<List<Product>> findByName(@RequestParam String productName) {
 		return productService.findByProductName(productName);
 	}
-	
+
 	@GetMapping("/getDetails")
 	public DataResult<List<ProductDto>> findAllByCategoryIdOrderByUnitPriceDesc(@RequestParam int id) {
 		return productService.findAllByCategoryIdOrderByUnitPriceDesc(id);
-		
+
 	}
 
 }

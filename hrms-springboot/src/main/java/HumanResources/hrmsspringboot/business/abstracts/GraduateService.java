@@ -7,9 +7,9 @@ import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.Graduate;
 
 public interface GraduateService {
-	
-	Result add (Graduate graduate);
-	
+
+	Result add(Graduate graduate);
+
 	DataResult<List<Graduate>> getAll();
 
 }

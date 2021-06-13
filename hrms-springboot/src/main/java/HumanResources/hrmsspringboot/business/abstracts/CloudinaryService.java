@@ -6,5 +6,5 @@ import HumanResources.hrmsspringboot.core.utilities.results.DataResult;
 
 public interface CloudinaryService {
 
-	DataResult<?> save (MultipartFile file);
+	DataResult<?> save(MultipartFile file);
 }

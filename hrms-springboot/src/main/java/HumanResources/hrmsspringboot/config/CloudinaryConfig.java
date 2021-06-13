@@ -12,27 +12,22 @@ import HumanResources.hrmsspringboot.business.concretes.CloudinaryManager;
 
 @Configuration
 public class CloudinaryConfig {
-	
-	
+
 	@Value("${cld.access-key}")
 	String apiKey;
-	
+
 	@Value("${cld.secret-key}")
 	String apiSecretKey;
-	
-	
+
 	@Bean
-    public Cloudinary cloudinaryUser(){
-        return new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "tselcuk",
-                "api_key", "api_key",
-                "api_secret", "pi_secret",
-                "secure", true));
-    }
-	
-	 @Bean
-     public CloudinaryService cloudinaryService(){
-         return new CloudinaryManager(cloudinaryUser());
-     }
+	public Cloudinary cloudinaryUser() {
+		return new Cloudinary(ObjectUtils.asMap("cloud_name", "tselcuk", "api_key", "api_key", "api_secret",
+				"pi_secret", "secure", true));
+	}
+
+	@Bean
+	public CloudinaryService cloudinaryService() {
+		return new CloudinaryManager(cloudinaryUser());
+	}
 
 }

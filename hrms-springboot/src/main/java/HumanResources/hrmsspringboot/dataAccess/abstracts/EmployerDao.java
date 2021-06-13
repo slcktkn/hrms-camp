@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import HumanResources.hrmsspringboot.entities.concretes.Employer;
 
-public interface EmployerDao extends JpaRepository<Employer,Integer> {
+public interface EmployerDao extends JpaRepository<Employer, Integer> {
 
 	boolean existsByCompanyName(String companyName);
 

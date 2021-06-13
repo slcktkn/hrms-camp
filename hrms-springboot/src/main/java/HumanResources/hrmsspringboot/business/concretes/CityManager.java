@@ -16,7 +16,7 @@ import HumanResources.hrmsspringboot.entities.concretes.City;
 
 @Service
 public class CityManager implements CityService {
-	
+
 	private CityDao cityDao;
 
 	@Autowired
@@ -33,17 +33,15 @@ public class CityManager implements CityService {
 
 	@Override
 	public DataResult<List<City>> getAll() {
-		
-		return new SuccessDataResult<List<City>>
-		(cityDao.findAll(), "Tüm şehirler başarıyla getirildi");
+
+		return new SuccessDataResult<List<City>>(cityDao.findAll(), "Tüm şehirler başarıyla getirildi");
 
 	}
 
 	@Override
 	public DataResult<List<City>> getAllSorted() {
-		Sort sort = Sort.by(Sort.Direction.DESC,"cityName"); 
-		return new SuccessDataResult<List<City>>
-		(cityDao.findAll(sort),"Başarıyla sıralandı");
+		Sort sort = Sort.by(Sort.Direction.DESC, "cityName");
+		return new SuccessDataResult<List<City>>(cityDao.findAll(sort), "Başarıyla sıralandı");
 	}
 
 }

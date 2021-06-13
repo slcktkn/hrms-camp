@@ -10,18 +10,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
-	
+
 	@JsonIgnore
 	private int id;
-	
+
 	private int categoryId;
-	
+
 	private String productName;
-	
+
 	private String categoryName;
-	
+
 	private double unitPrice;
-	
+
 	private double unitPrice1;
 
 }

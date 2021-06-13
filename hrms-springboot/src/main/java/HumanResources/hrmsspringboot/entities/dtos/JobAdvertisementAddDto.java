@@ -2,7 +2,9 @@ package HumanResources.hrmsspringboot.entities.dtos;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class JobAdvertisementAddDto {
 
-	@JsonIgnore
+	@JsonProperty(access = Access.READ_ONLY)
 	private int id;
 
 	private int employerId;

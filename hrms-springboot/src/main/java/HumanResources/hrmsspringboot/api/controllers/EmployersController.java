@@ -26,14 +26,14 @@ import HumanResources.hrmsspringboot.entities.concretes.Employer;
 @RestController
 @RequestMapping(value = "/api/employers")
 public class EmployersController {
-	
+
 	private EmployerService employerService;
 
 	public EmployersController(EmployerService employerService) {
 		super();
 		this.employerService = employerService;
 	}
-	
+
 	@PostMapping(value = "/add")
 	public ResponseEntity<?> add(@Valid @RequestBody Employer employer) {
 		return ResponseEntity.ok(this.employerService.add(employer));
@@ -42,21 +42,21 @@ public class EmployersController {
 
 	@GetMapping(value = "/getall")
 	public DataResult<List<Employer>> getAll() {
-		
+
 		return this.employerService.getAll();
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
-		Map<String, String> validationErrors = new HashMap<String,String>();
-		for(FieldError  fieldError : exceptions.getBindingResult().getFieldErrors()) {
+	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions) {
+		Map<String, String> validationErrors = new HashMap<String, String>();
+		for (FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors,"Doğrulama hataları");
-		
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama hataları");
+
 		return errors;
-		
+
 	}
 
 }

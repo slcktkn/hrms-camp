@@ -17,22 +17,22 @@ import HumanResources.hrmsspringboot.entities.dtos.JobExperienceDto;
 @RestController
 @RequestMapping("/api/jobexp")
 public class JobExperiencesController {
-	
+
 	private JobExperienceService jobExperienceService;
 
 	public JobExperiencesController(JobExperienceService jobExperienceService) {
 		super();
 		this.jobExperienceService = jobExperienceService;
 	}
-	
+
 	@GetMapping("/getall")
-	public DataResult<List<JobExperienceDto>> getAll(){
+	public DataResult<List<JobExperienceDto>> getAll() {
 		return jobExperienceService.getAll();
-		
+
 	}
-	
+
 	@PostMapping("/add")
-	public Result add (@RequestBody JobExperienceDto jobExperienceDto) {
+	public Result add(@RequestBody JobExperienceDto jobExperienceDto) {
 		jobExperienceService.add(jobExperienceDto);
 		return new SuccessResult("");
 	}

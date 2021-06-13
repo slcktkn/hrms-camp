@@ -23,9 +23,9 @@ public class EducationManager implements EducationService {
 	private EducationDao educationDao;
 	@Autowired
 	private DtoConverterService dtoConverterService;
-	
-@Autowired
-	public EducationManager(EducationDao educationDao,DtoConverterService dtoConverterService) {
+
+	@Autowired
+	public EducationManager(EducationDao educationDao, DtoConverterService dtoConverterService) {
 		super();
 		this.educationDao = educationDao;
 		this.dtoConverterService = dtoConverterService;
@@ -42,8 +42,6 @@ public class EducationManager implements EducationService {
 		return new SuccessDataResult<List<Education>>(educationDao.findAll(), "Tüm okullar getirildi");
 	}
 
-	
-	
 	@Override
 	public DataResult<List<EducationDto>> findAllByResumeIdOrderByStartedDateDesc(int id) {
 		List<Education> education = educationDao.findAllByResumeIdOrderByStartedDateDesc(id);
@@ -53,11 +51,9 @@ public class EducationManager implements EducationService {
 
 	@Override
 	public DataResult<List<EducationDto>> findAll() {
-	return new SuccessDataResult<List<EducationDto>>(
-			dtoConverterService.dtoConverter(educationDao.findAll(), EducationDto.class), "education listed");
-}
-	
-	
+		return new SuccessDataResult<List<EducationDto>>(
+				dtoConverterService.dtoConverter(educationDao.findAll(), EducationDto.class), "education listed");
+	}
 
 	@Override
 	public Result add(EducationDto educationDto) {
@@ -67,6 +63,5 @@ public class EducationManager implements EducationService {
 		}
 		return new ErrorResult("enter the date correctly");
 	}
-
 
 }

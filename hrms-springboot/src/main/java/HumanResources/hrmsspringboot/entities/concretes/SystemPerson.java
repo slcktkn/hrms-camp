@@ -17,22 +17,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SystemPerson {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="person_id")
+	@Column(name = "person_id")
 	private int personId;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="nationality_id")
+
+	@Column(name = "nationality_id")
 	private String nationalityId;
-	
-	@Column(name="date_of_birth")
+
+	@Column(name = "date_of_birth")
 	private int dateOfBirth;
 
 }

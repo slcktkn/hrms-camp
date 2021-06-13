@@ -1,7 +1,5 @@
 package HumanResources.hrmsspringboot.entities.dtos;
 
-
-
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResumeDto {
-	
+
 	@JsonIgnore
 	private int id;
 	private int employer_id;
@@ -24,6 +22,5 @@ public class ResumeDto {
 	private String description;
 	private Date createdDate;
 	private Date updatedDate;
-		
-	}
-	
+
+}

@@ -15,7 +15,7 @@ import HumanResources.hrmsspringboot.entities.concretes.JobPosition;
 
 @Service
 public class JobPositionManager implements JobPositionService {
-	
+
 	private JobPositionDao JobPositionDao;
 
 	@Autowired
@@ -26,14 +26,13 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public DataResult<List<JobPosition>> getAll() {
-		
-		return new SuccessDataResult<List<JobPosition>>
-		(this.JobPositionDao.findAll(), "Meslek isimleri listelendi");
+
+		return new SuccessDataResult<List<JobPosition>>(this.JobPositionDao.findAll(), "Meslek isimleri listelendi");
 	}
 
 	@Override
 	public Result add(JobPosition jobPosition) {
-		
+
 		this.JobPositionDao.save(jobPosition);
 		return new SuccessResult("Meslek eklendi");
 	}

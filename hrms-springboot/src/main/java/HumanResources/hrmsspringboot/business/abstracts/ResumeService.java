@@ -10,14 +10,13 @@ import HumanResources.hrmsspringboot.entities.dtos.ResumeAddDto;
 import HumanResources.hrmsspringboot.entities.dtos.ResumeGetDto;
 
 public interface ResumeService {
-	
-	Result add (ResumeAddDto resume);
-	
+
+	Result add(ResumeAddDto resume);
+
 	DataResult<List<ResumeGetDto>> getAll();
-	
-	//DataResult<List<ResumeGetDto>> getAllByEmployeeId(int employeeId);
-	
-	Result saveImage (MultipartFile file,int resumeId);
-	
+
+	// DataResult<List<ResumeGetDto>> getAllByEmployeeId(int employeeId);
+
+	Result saveImage(MultipartFile file, int resumeId);
 
 }

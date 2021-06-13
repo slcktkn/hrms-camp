@@ -19,9 +19,9 @@ import HumanResources.hrmsspringboot.entities.concretes.Graduate;
 @RestController
 @RequestMapping("/api/graduates")
 public class GraduatesController {
-	
+
 	private GraduateService graduateService;
-	
+
 	@Autowired
 	public GraduatesController(GraduateService graduateService) {
 		super();
@@ -35,7 +35,7 @@ public class GraduatesController {
 
 	@GetMapping("/getall")
 	public DataResult<List<Graduate>> getAll() {
-		
+
 		return this.graduateService.getAll();
 	}
 

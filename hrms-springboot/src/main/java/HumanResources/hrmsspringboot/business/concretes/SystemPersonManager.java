@@ -26,5 +26,5 @@ public class SystemPersonManager implements SystemPersonService {
 	public DataResult<List<SystemPerson>> getAll() {
 		return new SuccessDataResult<List<SystemPerson>>(systemPersonDao.findAll(), "Data getirildi");
 
-}
 	}
+}

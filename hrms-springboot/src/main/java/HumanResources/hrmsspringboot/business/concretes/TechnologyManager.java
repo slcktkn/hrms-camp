@@ -15,7 +15,7 @@ import HumanResources.hrmsspringboot.entities.concretes.Technology;
 
 @Service
 public class TechnologyManager implements TechnologyService {
-	
+
 	private TechnologyDao technologyDao;
 
 	@Autowired
@@ -32,8 +32,7 @@ public class TechnologyManager implements TechnologyService {
 
 	@Override
 	public DataResult<List<Technology>> getAll() {
-		return new SuccessDataResult<List<Technology>>
-		(technologyDao.findAll(), "Tüm liste başarıyla etirildi");
+		return new SuccessDataResult<List<Technology>>(technologyDao.findAll(), "Tüm liste başarıyla etirildi");
 	}
 
 }

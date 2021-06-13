@@ -1,4 +1,5 @@
 package HumanResources.hrmsspringboot.business.concretes;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,10 @@ import HumanResources.hrmsspringboot.core.utilities.results.SuccessResult;
 import HumanResources.hrmsspringboot.dataAccess.abstracts.LanguageDao;
 import HumanResources.hrmsspringboot.entities.concretes.Language;
 import HumanResources.hrmsspringboot.entities.dtos.LanguageDto;
-import HumanResources.hrmsspringboot.entities.dtos.LanguageGetDto;
 
 @Service
-public class LanguageManager implements LanguageService{
-	
+public class LanguageManager implements LanguageService {
+
 	private LanguageDao languageDao;
 	private DtoConverterService dtoConverterService;
 
@@ -31,15 +31,15 @@ public class LanguageManager implements LanguageService{
 	@Override
 	public Result add(LanguageDto languageDto) {
 
-				languageDao.save((Language)dtoConverterService.dtoClassConverter(languageDto, Language.class));
-			return new SuccessResult("Dil türü başarıyla eklendi");
-			}
-	
+		languageDao.save((Language) dtoConverterService.dtoClassConverter(languageDto, Language.class));
+		return new SuccessResult("Dil türü başarıyla eklendi");
+	}
 
 	@Override
-	public DataResult<List<LanguageGetDto>> getAll() {	
-		return new SuccessDataResult<List<LanguageGetDto>>
-		(dtoConverterService.dtoConverter(languageDao.findAll(), LanguageGetDto.class),"Dil seçenekleri listelendi");
-		
+	public DataResult<List<LanguageDto>> getAll() {
+		return new SuccessDataResult<List<LanguageDto>>(
+				dtoConverterService.dtoConverter(languageDao.findAll(), LanguageDto.class),
+				"Dil seçenekleri listelendi");
+
 	}
 }

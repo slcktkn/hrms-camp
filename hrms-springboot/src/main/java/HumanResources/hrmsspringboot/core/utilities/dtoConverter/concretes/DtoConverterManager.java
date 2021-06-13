@@ -12,23 +12,23 @@ import HumanResources.hrmsspringboot.core.utilities.dtoConverter.abstracts.DtoCo
 @Service
 public class DtoConverterManager implements DtoConverterService {
 
-		private ModelMapper modelMapper;
+	private ModelMapper modelMapper;
 
-		@Autowired
-		public DtoConverterManager(ModelMapper modelMapper) {
-			super();
-			this.modelMapper = modelMapper;
-		}
+	@Autowired
+	public DtoConverterManager(ModelMapper modelMapper) {
+		super();
+		this.modelMapper = modelMapper;
+	}
 
-		@Override
-		public <S, T> List<T> dtoConverter(List<S> s, Class<T> targetClass) {
-			return s.stream().map(element -> modelMapper.map(element, targetClass)).collect(Collectors.toList());
+	@Override
+	public <S, T> List<T> dtoConverter(List<S> s, Class<T> targetClass) {
+		return s.stream().map(element -> modelMapper.map(element, targetClass)).collect(Collectors.toList());
 
-		}
+	}
 
-		@Override
-		public <T> Object dtoClassConverter(Object source, Class<T> baseClass) {
-			return modelMapper.map(source, baseClass);
+	@Override
+	public <T> Object dtoClassConverter(Object source, Class<T> baseClass) {
+		return modelMapper.map(source, baseClass);
 
-		}
+	}
 }

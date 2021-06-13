@@ -1,7 +1,7 @@
 package HumanResources.hrmsspringboot.core.utilities.results;
 
 public class DataResult<T> extends Result {
-	
+
 	private T data;
 
 	public DataResult(T data, boolean success, String message) {
@@ -19,6 +19,5 @@ public class DataResult<T> extends Result {
 	public T getData() {
 		return this.data;
 	}
-
 
 }

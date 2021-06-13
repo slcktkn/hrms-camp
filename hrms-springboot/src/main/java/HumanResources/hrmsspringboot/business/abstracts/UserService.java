@@ -5,8 +5,8 @@ import HumanResources.hrmsspringboot.entities.concretes.User;
 
 public interface UserService {
 
-	Result add (User user);
+	Result add(User user);
 
 	Result findByEmail(String email);
-	
+
 }

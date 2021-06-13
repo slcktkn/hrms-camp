@@ -8,14 +8,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeWithJobPositionDto {
-	
+
 	private int employeeId;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String jobDescription;
-	
 
 }

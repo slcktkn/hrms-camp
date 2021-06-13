@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResumeWithFilteredLanguageDto {
-	
+
 	private int id;
-	
+
 	private String language;
-	
+
 	private char langLevel;
-	
+
 	private Date createdDate;
 
 }

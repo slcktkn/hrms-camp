@@ -15,7 +15,7 @@ import HumanResources.hrmsspringboot.entities.concretes.Employer;
 
 @Service
 public class EmployerManager implements EmployerService {
-	
+
 	private EmployerDao employerDao;
 
 	@Autowired
@@ -26,21 +26,19 @@ public class EmployerManager implements EmployerService {
 
 	@Override
 	public DataResult<List<Employer>> getAll() {
-		
-		return new SuccessDataResult<List<Employer>>
-		(this.employerDao.findAll(),"İşveren listesi getirildi");
+
+		return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "İşveren listesi getirildi");
 	}
 
 	@Override
 	public DataResult<Employer> getById(int id) {
-		
-		return new SuccessDataResult<Employer>
-		(this.employerDao.getById(id), "id numarasına göre işveren getirildi");
+
+		return new SuccessDataResult<Employer>(this.employerDao.getById(id), "id numarasına göre işveren getirildi");
 	}
 
 	@Override
 	public Result add(Employer employer) {
-		
+
 		this.employerDao.save(employer);
 		return new SuccessResult("İşeren listeye eklendi");
 	}

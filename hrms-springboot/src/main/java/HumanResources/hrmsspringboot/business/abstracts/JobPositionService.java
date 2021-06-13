@@ -7,9 +7,9 @@ import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.JobPosition;
 
 public interface JobPositionService {
-	
+
 	DataResult<List<JobPosition>> getAll();
-	
+
 	Result add(JobPosition jobPosition);
 
 }

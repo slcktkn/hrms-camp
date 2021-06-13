@@ -10,21 +10,18 @@ import HumanResources.hrmsspringboot.entities.dtos.JobAdvertisementGetDto;
 
 public interface JobAdvertisementService {
 
-	
 	DataResult<List<JobAdvertisement>> getAll();
-	
+
 	DataResult<List<JobAdvertisementGetDto>> findByIsActive();
-	
+
 	DataResult<List<JobAdvertisementGetDto>> findByIsActiveAndEmployer_CompanyName(String companyName);
-	
+
 	DataResult<List<JobAdvertisementGetDto>> findAll();
 
 	Result add(JobAdvertisementAddDto jobAdvertisementRequestDto);
-
 
 	DataResult<List<JobAdvertisementGetDto>> findAllByIdAndIsActiveTrue(int employerId);
 
 	DataResult<JobAdvertisementGetDto> update(int id, boolean activate);
 
 }
-

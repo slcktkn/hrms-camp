@@ -8,16 +8,15 @@ import HumanResources.hrmsspringboot.entities.concretes.Education;
 import HumanResources.hrmsspringboot.entities.dtos.EducationDto;
 
 public interface EducationService {
-	
-	Result add (Education education);
-	
+
+	Result add(Education education);
+
 	DataResult<List<Education>> getAll();
-	
+
 	DataResult<List<EducationDto>> findAllByResumeIdOrderByStartedDateDesc(int id);
-	
+
 	DataResult<List<EducationDto>> findAll();
 
 	Result add(EducationDto educationDto);
-
 
 }

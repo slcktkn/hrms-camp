@@ -7,7 +7,7 @@ import HumanResources.hrmsspringboot.core.utilities.results.Result;
 import HumanResources.hrmsspringboot.entities.concretes.Employee;
 
 public interface EmployeeService {
-	
+
 	DataResult<List<Employee>> getAll();
 
 	DataResult<Employee> getById(int id);

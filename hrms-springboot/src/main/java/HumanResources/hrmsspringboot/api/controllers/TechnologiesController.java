@@ -16,19 +16,19 @@ import HumanResources.hrmsspringboot.entities.concretes.Technology;
 @RestController
 @RequestMapping("/api/techs")
 public class TechnologiesController {
-	
+
 	private TechnologyService technologyService;
 
 	public TechnologiesController(TechnologyService technologyService) {
 		super();
 		this.technologyService = technologyService;
 	}
-	
+
 	@GetMapping("/getall")
 	public DataResult<List<Technology>> getAll() {
 		return technologyService.getAll();
 	}
-	
+
 	@PostMapping("/add")
 	public Result add(@RequestBody Technology technology) {
 		return technologyService.add(technology);

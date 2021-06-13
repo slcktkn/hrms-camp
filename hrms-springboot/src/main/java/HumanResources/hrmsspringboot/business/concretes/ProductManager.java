@@ -18,12 +18,12 @@ import HumanResources.hrmsspringboot.entities.dtos.ProductDto;
 
 @Service
 public class ProductManager implements ProductService {
-	
+
 	private ProductDao productDao;
 	private DtoConverterService dtoConverterService;
 
 	@Autowired
-	public ProductManager(ProductDao productDao,DtoConverterService dtoConverterService) {
+	public ProductManager(ProductDao productDao, DtoConverterService dtoConverterService) {
 		super();
 		this.productDao = productDao;
 		this.dtoConverterService = dtoConverterService;
@@ -31,17 +31,16 @@ public class ProductManager implements ProductService {
 
 	@Override
 	public DataResult<List<Product>> getAll() {
-		return new SuccessDataResult<List<Product>>(productDao.findAll(),"");
+		return new SuccessDataResult<List<Product>>(productDao.findAll(), "");
 	}
 
 	@Override
 	public Result add(ProductDto product) {
 		System.out.println("metod calıstı");
-		if (product.getUnitPrice()==product.getUnitPrice1()) {
-			
-			productDao.save((Product)dtoConverterService.dtoClassConverter
-					(product, Product.class));
-		return new SuccessResult();
+		if (product.getUnitPrice() == product.getUnitPrice1()) {
+
+			productDao.save((Product) dtoConverterService.dtoClassConverter(product, Product.class));
+			return new SuccessResult();
 		}
 		return new ErrorResult("olmadı");
 
@@ -49,14 +48,15 @@ public class ProductManager implements ProductService {
 
 	@Override
 	public DataResult<List<Product>> findByProductName(String productName) {
-		
+
 		return new SuccessDataResult<List<Product>>(productDao.findByProductName(productName));
 	}
 
 	@Override
 	public DataResult<List<ProductDto>> findAllByCategoryIdOrderByUnitPriceDesc(int id) {
 		List<Product> product = productDao.findAllByCategoryIdOrderByUnitPriceDesc(id);
-		return new SuccessDataResult<List<ProductDto>>(dtoConverterService.dtoConverter(product, ProductDto.class), "Dto çekildi");
+		return new SuccessDataResult<List<ProductDto>>(dtoConverterService.dtoConverter(product, ProductDto.class),
+				"Dto çekildi");
 	}
 
 }

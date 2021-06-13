@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JobAdvertisementGetDto {
-	
+
 	private String cityName;
 	private String jobPositionDescription;
 	private Date createdDate;

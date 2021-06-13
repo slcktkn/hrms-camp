@@ -1,7 +1,6 @@
 package HumanResources.hrmsspringboot.entities.dtos;
 
 import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,10 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LanguageDto {
-	
-	@JsonIgnore
-	private int id;
-	
+
 	private int resumeId;
 
 	private String language;
@@ -22,9 +18,5 @@ public class LanguageDto {
 	private int langLevel;
 
 	private Date createdDate;
-	
-	private boolean resumeIsActive;
-	
-	private String resumeJobDescription;
-	
+
 }

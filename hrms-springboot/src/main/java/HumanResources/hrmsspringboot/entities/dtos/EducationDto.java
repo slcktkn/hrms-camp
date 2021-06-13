@@ -3,6 +3,8 @@ package HumanResources.hrmsspringboot.entities.dtos;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +22,7 @@ public class EducationDto {
 
 	private String schoolName;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private int graduateId;
 
 	private String schoolDepartment;
@@ -27,6 +30,5 @@ public class EducationDto {
 	private Date startedDate;
 
 	private Date endedDate;
-
 
 }
